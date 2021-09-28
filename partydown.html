@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      if (location.hostname.includes('github.io')) {
+        partytown = {
+          lib: '/partytown-example/~partytown/'
+        };
+      }
+      
+      (function () {
+        var t,
+          e = window,
+          p = document,
+          a = e.partytown || {},
+          n = p.createElement("script");
+        (e._ptf = []),
+          (a.forward || []).map((p) => {
+            (t = e),
+              p.split(".").map((a, n, r) => {
+                t = t[a] =
+                  n < r.length - 1
+                    ? t[a] || {}
+                    : function () {
+                        e._ptf.push(p, arguments);
+                      };
+              });
+          }),
+          (n.async = n.defer = !0),
+          (n.src = "./~partytown/partytown." + (a.debug ? "debug.js" : "js")),
+          p.head.appendChild(n);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root">blinking</div>
+    <button onclick="toggleRed()">Toggle Red</button>
+    <script>
+      function toggleRed() {
+        document.querySelector("#root").style.color =
+          document.querySelector("#root").style.color === "red" ? "" : "red";
+      }
+    </script>
+    <script type="text/partytown">
+      console.log('start to block')
+      console.log(`Nah. you won't be blocked`)
+      const now = Date.now()
+      let count = 1;
+      while (Date.now() - now < 10000) {
+        if (Date.now() - now > count * 1000) {
+          console.log('blocking');
+          count += 1;
+        }
+      }
+      console.log('end block')
+    </script>
+    <script>
+      setInterval(toggleRed, 1000)
+    </script>
+  </body>
+</html>

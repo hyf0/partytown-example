@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">blocked in 10s</div>
+    <button onclick="toggleRed()">Toggle Red</button>
+    <script>
+      function toggleRed() {
+        document.querySelector("#root").style.color =
+          document.querySelector("#root").style.color === "red" ? "" : "red";
+      }
+    </script>
+    <script>
+      console.log('start to block')
+      console.log('you will see white screen in 10s and be blocked')
+      const now = Date.now()
+      let count = 1;
+      while (Date.now() - now < 10000) {
+        if (Date.now() - now > count * 1000) {
+          console.log('blocking');
+          count += 1;
+        }
+      }
+      console.log('end block')
+    </script>
+    <script>
+      setInterval(toggleRed, 1000)
+    </script>
+  </body>
+</html>

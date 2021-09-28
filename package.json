@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "http-server ./"
+  },
+  "devDependencies": {
+    "http-server": "^13.0.2"
+  },
+  "dependencies": {
+    "@builder.io/partytown": "^0.0.4"
+  }
+}
